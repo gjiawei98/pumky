@@ -31,24 +31,32 @@
         </a>
     </div>
     <ul id="js-nav-menu" class="nav-menu js-nav-built">
-        <!-- <li class="active open"> -->
-        <li>
+        <!-- <li class="active open ""> -->
+        <li class="<?php if (\Request::is('home/*') || \Request::is('home')) {echo 'active';}?>" >
             <a href="{{route('home')}}" title="Home" data-filter-tags="Home" aria-expanded="true" class=" waves-effect waves-themed">
                 <i class="fa fa-home" aria-hidden="true"></i>
                 <span class="nav-link-text" data-i18n="nav.application_intel">Home</span>
-            <b class="collapse-sign"></b></a>
+            <b class="collapse-sign"></b></a> 
+        </li>
+        <li class="<?php if (\Request::is('sales/*') || \Request::is('sales')) {echo 'active';}?>">
             <a href="{{route('sales.index')}}" title="Sale List" data-filter-tags="sales list" aria-expanded="true" class=" waves-effect waves-themed">
                 <i class="fa fa-line-chart" aria-hidden="true"></i>
                 <span class="nav-link-text" data-i18n="nav.application_intel">Sales List</span>
             <b class="collapse-sign"></b></a>
+        </li>
+        <li class="<?php if (\Request::is('category/*') || \Request::is('category')) {echo 'active';}?>">
             <a href="{{route('category.index')}}" title="Cateogry List" data-filter-tags="category list" aria-expanded="true" class=" waves-effect waves-themed">
                 <i class="fa fa-list-alt" aria-hidden="true"></i>
                 <span class="nav-link-text" data-i18n="nav.application_intel">Category List</span>
             <b class="collapse-sign"></b></a>
+        </li>
+        <li class="<?php if (\Request::is('product/*') || \Request::is('product')) {echo 'active';}?>">
             <a href="{{route('product.index')}}" title="Product List" data-filter-tags="product list" aria-expanded="true" class=" waves-effect waves-themed">
                 <i class="fa fa-product-hunt" aria-hidden="true"></i>
                 <span class="nav-link-text" data-i18n="nav.application_intel">Product List</span>
             <b class="collapse-sign"></b></a>
+        </li>
+        <li>
             <a href="{{route('merchant.index')}}" title="Merchant List" data-filter-tags="merchant list" aria-expanded="true" class=" waves-effect waves-themed">
                 <i class="fas fa-user"></i>
                 <span class="nav-link-text" data-i18n="nav.application_intel">Merchant List</span>

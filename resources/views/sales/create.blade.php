@@ -69,7 +69,7 @@
                                         </div> 
                                     </div>
 
-                                    <div class="col-6">
+                                    <div class="col-4">
                                         <div class="form-group">
                                             <label class="form-label" for="sales_date">Sales Date</label>
                                             <div class="input-group">
@@ -81,12 +81,29 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-6">
+                                    <div class="col-4">
                                         <div class="form-group">
                                             <label class="form-label" for="tracking_number">Tracking Number</label>
                                             <input type="text" id="tracking_number" name="tracking_number" class="form-control" value="{{old('tracking_number')}}">
                                         </div> 
                                     </div>
+
+                                    <div class="col-4">
+                                        <div class="form-group" data-select2-id="courier">
+                                            <label class="form-label" for="courier">
+                                                Courier
+                                            </label>
+                                            <select class="select2 form-control w-100 select2-hidden-accessible"
+                                                id="courier" data-select2-id="courier" tabindex="-1" name="courier"
+                                                aria-hidden="true" value="{{ old('courier') }}">
+                                                <option value="">Select Courier ....</option>
+                                                @foreach ($couriers as $courier)
+                                                    <option value="{{ $courier->id }}">{{ $courier->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label class="form-label" for="street_no">Street No</label>
@@ -112,7 +129,7 @@
                                                 aria-hidden="true" value="{{ old('state') }}">
                                                 <option value="">Select State ....</option>
                                                 @foreach ($states as $state)
-                                                    <option value="{{ $state->state_code }}">{{ $state->name }}</option>
+                                                    <option value="{{ $state->name }}">{{ $state->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -218,11 +235,11 @@
 
         var product_id = $(this).find(':selected').data('id');
         var index = $(this).data('index');
-
+        console.log(product_id);
         if(product_id != null) {
             $.ajax({
                 method: "GET",
-                url: 'get_product/'+product_id,
+                url: '/get_product/'+product_id,
                 data: {
                     _token: '{{ csrf_token() }}'
                 },
@@ -257,7 +274,7 @@
         var insert =    "<div class='row product_row' id='product_detail"+no+"'>"+
                             "<div class='col-3'>"+
                                 "<div class='form-group' data-select2-id='"+no+"'>"+
-                                    "<label class='form-label' for='state'>"+
+                                    "<label class='form-label' for='product'>"+
                                         " <i class='fa fa-trash delete_product' style='color:red;'data-id='"+no+"'></i> Product"+ 
                                     "</label>"+
                                     "<select class='select2 form-control w-100 select2-hidden-accessible product_list' id='product_id' data-select2-id='"+no+"' tabindex='-1' name='product_id["+no+"]' data-index = '"+no+"' required aria-hidden='true' value='{{ old('product_id') }}'>"+

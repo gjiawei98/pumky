@@ -30,6 +30,7 @@ class HomeController extends Controller
         $merchants = Merchant::all();
         $products = Product::all();
      
+        // BAR CHART
         $sales = Sales::get()->groupby('month','year');
         $total = Sales::sum('total_profit');
         $data = null; 
@@ -55,7 +56,40 @@ class HomeController extends Controller
         foreach ($month as $m_key => $m) {
             $data .=  $m.',';
         }
+
+
+        // SALE CHART
+        $days = array();
+        $sales_arr = array();
+        $sales_per_day = Sales::whereDate('sales.sales_date', '>', Carbon::now()->subDays(30))
+            ->get();
+
+        for($i = 29; $i >= 0; $i--)
+        {
+            $days[$i] =  date("Y-m-d", strtotime("-$i days"));
+        }
+ 
+        $day_profit = 0; 
+
+        foreach ($days as $key =>$d) {
+
+            $sales_arr[Carbon::parse($d)->getPreciseTimestamp(3)] = 0;
+            foreach ($sales_per_day as $spd) {
+              
+                if(Carbon::parse($spd->sales_date)->format('m-d') == Carbon::parse($d)->format('m-d')){
+                    $sales_arr[Carbon::parse($d)->getPreciseTimestamp(3)] += $spd->total_profit;
+                }
+            }
+        }   
+
+        $sales_array = null;
+        $i = 0;
+        foreach ($sales_arr as $key => $sa) {
+            $sales_array[$i] = [$key,$sa];
+            $i++;
+        }
+
         $data = substr_replace($data, "", -1);
-        return view('dashboard.index',compact('products','merchants','month','data','total'));
+        return view('dashboard.index',compact('products','merchants','month','data','total','sales_array','sales_arr'));
     }
 }

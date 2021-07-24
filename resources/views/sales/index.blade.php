@@ -64,6 +64,7 @@
                     <table class="table table-bordered table-hover m-0">
                         <thead class="thead-themed">
                             <tr>
+                                <th>Order Number</th>
                                 <th>Customer Name</th>
                                 <th>Sales Date</th>
                                 <th>Tracking Number</th>
@@ -75,6 +76,7 @@
                         <tbody>
                             @forelse ($sales as $sale)
                             <tr>
+                                <td><a href="{{route('sales.show',$sale->id)}}">{{$sale->order_number}}</a></td>
                                 <td>{{$sale->customer_first_name}} {{$sale->customer_last_name}}</td>
                                 <td>{{$sale->sales_date}}</td>
                                 <td>{{$sale->tracking_number}}</td>

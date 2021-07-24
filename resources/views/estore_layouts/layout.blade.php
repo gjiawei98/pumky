@@ -19,6 +19,7 @@
         <link rel="stylesheet" media="screen, print" href="{{ asset('css/notifications/toastr/toastr.css') }}">
         <link rel="stylesheet" media="screen, print" href="{{ asset('css/datagrid/datatables/datatables.bundle.css') }}">
         <link rel="stylesheet" media="screen, print" href="{{ asset('css/jquery-ui.css')}}">
+        <link rel="stylesheet" media="screen, print" href="{{ asset('css/page-invoice.css')}}">
         <link rel="stylesheet" media="screen, print" href="{{ asset('css/formplugins/bootstrap-datepicker/bootstrap-datepicker.css') }}">
         <link rel="stylesheet" media="screen, print" href="{{ asset('css/formplugins/bootstrap-datepicker/bootstrap-datepicker.css.map') }}">
         <link rel="stylesheet" media="screen, print" href="{{ asset('css/formplugins/bootstrap-daterangepicker/bootstrap-daterangepicker.css') }}">
@@ -258,6 +259,7 @@
         <script src="{{ asset('js/formplugins/bootstrap-daterangepicker/bootstrap-daterangepicker.js') }}"></script>
         <script src="{{ asset('js/formplugins/bootstrap-timepicker/js/bootstrap-timepicker.js') }}"></script>
         <script src="{{ asset('js/formplugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js') }}"></script>
+        <script src="{{ asset('js/formplugins/bootstrap-colorpicker/bootstrap-colorpicker.js') }}"></script>
         <script src="{{ asset('js/statistics/chartjs/chartjs.bundle.js') }}"></script>
 
         <script src="{{ asset('js/datetime-moment.js') }}"></script>
